@@ -1,11 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [symbolAllowed, setSymbolAllowed] = useState(false);
   const [length, setLength] = useState(8);
   const [Password, setPassword] = useState("");
+  const passwordGenerator = () => {
+    let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    let num = "1234567890";
+    let symbols = "`~!@#$%^&*()-_=+[{<.],?}|;:>'";
+    if (numberAllowed) {
+      char += num;
+    }
+    if (symbolAllowed) {
+      char += symbols;
+    }
+    let pass = "";
+    for (let i = 1; i <= length; i++) {
+      let random = Math.floor(Math.random() * (char.length - 1));
 
+      pass += char.charAt(random);
+      console.log(char);
+
+      console.log(random);
+    }
+    console.log(pass);
+    setPassword(pass);
+  };
+  useEffect(() => {
+    passwordGenerator();
+  }, [numberAllowed, symbolAllowed, length, setPassword]);
 
   return (
     <>
@@ -44,14 +68,15 @@ function App() {
             <input
               type="checkbox"
               id="numberInput"
-              className="cursor-pointer accent-blue-600 rounded
+              className="cursor-pointer accent-blue-600 rounded 
                 "
-            />
-            <label
-              htmlFor="numberInput" value={numberAllowed}
+              value={numberAllowed}
               onChange={() => {
                 setNumberAllowed((prev) => !prev);
               }}
+            />
+            <label
+              htmlFor="numberInput"
               className="cursor-pointer text-orange-500"
             >
               Numbers
@@ -59,11 +84,16 @@ function App() {
           </div>
 
           <div className="flex items-center gap-x-1">
-            <input type="checkbox" />
-            <label
-              htmlFor="symbolInput" value={symbolAllowed} onChange={() => {
+            <input
+              id="symbolInput"
+              type="checkbox"
+              value={symbolAllowed}
+              onChange={() => {
                 setSymbolAllowed((prev) => !prev);
               }}
+            />
+            <label
+              htmlFor="symbolInput"
               className="cursor-pointer text-orange-500"
             >
               Symbols
