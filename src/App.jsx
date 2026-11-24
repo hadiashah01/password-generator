@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [symbolAllowed, setSymbolAllowed] = useState(false);
   const [length, setLength] = useState(8);
   const [Password, setPassword] = useState("");
-
+  let passInput = useRef(null);
   const passwordGenerator = useCallback(() => {
     let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     let num = "1234567890";
@@ -29,15 +29,16 @@ function App() {
     passwordGenerator();
   }, [numberAllowed, symbolAllowed, length, passwordGenerator]);
 
-  const copyPassword =useCallback(() => {
+  const copyPassword = useCallback(() => {
+    passInput.current?.select();
     window.navigator.clipboard.writeText(Password);
-  },[Password]) ;
+  }, [Password]);
   return (
     <>
       <div className="mt-[30vh] w-full max-w-md mx-auto shadow-md rounded-2xl px-6 py-6 my-8 bg-gray-800 text-orange-500">
         {" "}
         <div className="flex shadow rounded-lg overflow-hidden mb-4 bg-white">
-          <input
+          <input ref={passInput}
             type="text"
             className="outline-none w-full py-2 px-3 text-orange-500 font-mono tracking-wider font-semibold"
             placeholder="Password"
@@ -58,7 +59,7 @@ function App() {
             <input
               type="range"
               value={length}
-              max={100}
+              max={40}
               min={8}
               onChange={(e) => setLength(e.target.value)}
             />
