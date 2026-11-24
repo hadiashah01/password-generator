@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [symbolAllowed, setSymbolAllowed] = useState(false);
   const [length, setLength] = useState(8);
   const [Password, setPassword] = useState("");
-  const passwordGenerator = () => {
+
+  const passwordGenerator = useCallback(() => {
     let char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     let num = "1234567890";
     let symbols = "`~!@#$%^&*()-_=+[{<.],?}|;:>'";
@@ -20,17 +21,17 @@ function App() {
       let random = Math.floor(Math.random() * (char.length - 1));
 
       pass += char.charAt(random);
-      console.log(char);
-
-      console.log(random);
     }
-    console.log(pass);
     setPassword(pass);
-  };
-  useEffect(() => {
-    passwordGenerator();
   }, [numberAllowed, symbolAllowed, length, setPassword]);
 
+  useEffect(() => {
+    passwordGenerator();
+  }, [numberAllowed, symbolAllowed, length, passwordGenerator]);
+
+  const copyPassword =useCallback(() => {
+    window.navigator.clipboard.writeText(Password);
+  },[Password]) ;
   return (
     <>
       <div className="mt-[30vh] w-full max-w-md mx-auto shadow-md rounded-2xl px-6 py-6 my-8 bg-gray-800 text-orange-500">
@@ -44,7 +45,10 @@ function App() {
             value={Password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white px-4 py-1 shrink-0 font-medium transition-colors">
+          <button
+            className="outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white px-4 py-1 shrink-0 font-medium transition-colors"
+            onClick={copyPassword}
+          >
             copy
           </button>
         </div>
@@ -55,7 +59,7 @@ function App() {
               type="range"
               value={length}
               max={100}
-              min={6}
+              min={8}
               onChange={(e) => setLength(e.target.value)}
             />
             <label className="text-orange-500 font-medium">
