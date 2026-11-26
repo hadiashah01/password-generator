@@ -23,6 +23,10 @@ This project demonstrates how React Hooks can be used to build an interactive ut
 
 Users can control password length, enable numbers, and include symbols. The generated password is displayed in a read-only input field and can be copied to the clipboard.
 
+## Preview
+
+![Password Generator Preview](https://github.com/hadiashah01/password-generator/blob/main/public/pass-gen-preview.png)
+
 ## Features
 
 - **Automatic Password Generation** — Generates a password when the application loads or generation settings change.
@@ -144,13 +148,13 @@ npm run dev
 | `npm run build`   | Creates a production build.            |
 | `npm run preview` | Previews the production build locally. |
 | `npm run lint`    | Runs Oxlint.                           |
-]
 
+]
 
 ## Author
 
 **Hadia Shahjahan**
 
 **Repository:** [password-generator](https://github.com/hadiashah01/password-generator)  
-**Github:** [Github Profile Link ](https://github.com/hadiashah01/)    
+**Github:** [Github Profile Link ](https://github.com/hadiashah01/)  
 **Linkedin:** [Linkedin Profile Link ](https://www.linkedin.com/in/hadia-shahjahan/)
