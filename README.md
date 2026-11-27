@@ -9,10 +9,12 @@ Password generation updates automatically whenever the selected options change, 
 ## Table of Contents
 
 - [Overview](#overview)
+- [Preview and Live Demo](#preview-and-live-demo)
 - [Features](#features)
 - [How It Works](#how-it-works)
 - [React Concepts Used](#react-concepts-used)
 - [Project Structure](#project-structure)
+- [Deployment](#deployment)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Available Scripts](#available-scripts)
@@ -23,9 +25,11 @@ This project demonstrates how React Hooks can be used to build an interactive ut
 
 Users can control password length, enable numbers, and include symbols. The generated password is displayed in a read-only input field and can be copied to the clipboard.
 
-## Preview
+## Preview and Live Demo
 
-![Password Generator Preview](https://github.com/hadiashah01/password-generator/blob/main/public/pass-gen-preview.png)
+Click the preview to visit the Live Demo 👇
+
+[![Password Generator Preview](https://github.com/hadiashah01/password-generator/blob/main/public/pass-gen-preview.png)](https://password-generator-gules-delta.vercel.app/)
 
 ## Features
 
@@ -94,6 +98,12 @@ password-generator/
 └── vite.config.js
 ```
 
+## Deployment
+
+The project is deployed on vercel. Below is the Live link
+
+**[https://password-generator-gules-delta.vercel.app/](https://password-generator-gules-delta.vercel.app/)**
+
 ## Tech Stack
 
 | Technology              | Purpose                                          |
@@ -148,8 +158,6 @@ npm run dev
 | `npm run build`   | Creates a production build.            |
 | `npm run preview` | Previews the production build locally. |
 | `npm run lint`    | Runs Oxlint.                           |
-
-]
 
 ## Author
 

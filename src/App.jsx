@@ -34,8 +34,8 @@ function App() {
     window.navigator.clipboard.writeText(Password);
   }, [Password]);
   return (
-    <>
-      <div className="mt-[30vh] w-full max-w-md mx-auto shadow-md rounded-2xl px-6 py-6 my-8 bg-gray-800 text-orange-500">
+    <> <h1  className="outline-none w-full text-wrap text-2xl mt-[30vh] py-2 px-3 text-orange-500 font-mono tracking-wider font-bold text-center">Generate and Copy Random <br />Passwords </h1>
+      <div className=" w-full max-w-md mx-auto shadow-md rounded-2xl px-6 py-6 my-8 bg-gray-800 text-orange-500">
         {" "}
         <div className="flex shadow rounded-lg overflow-hidden mb-4 bg-white">
           <input ref={passInput}
